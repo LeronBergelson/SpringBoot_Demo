@@ -1,22 +1,25 @@
 package com.example.SpringBootDemo.Registration;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api")
-@AllArgsConstructor
+//@AllArgsConstructor
 public class RegistrationController {
 
-    private RegistrationService registrationService;
+    @Autowired
+    RegistrationService registrationService;
 
-    @PostMapping(value = "/registration")
+    @PostMapping(path = "/registration")
     public String register(@RequestBody RegistrationRequest request){
         return registrationService.register(request);
     }
 
+    @GetMapping(path = "/registration/confirm")
+    public String confirm(@RequestParam("token") String token) {
+        return registrationService.confirmToken(token);
+    }
 
 }

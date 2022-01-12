@@ -1,4 +1,4 @@
-package com.example.SpringBootDemo.UserRoles;
+package com.example.SpringBootDemo.User;
 
 public enum UserRole {
     USER,

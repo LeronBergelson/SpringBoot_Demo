@@ -1,6 +1,5 @@
-package com.example.SpringBootDemo.Models;
+package com.example.SpringBootDemo.User;
 
-import com.example.SpringBootDemo.UserRoles.UserRole;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,6 @@ import java.util.Collections;
 @NoArgsConstructor
 @Entity
 public class User implements UserDetails {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

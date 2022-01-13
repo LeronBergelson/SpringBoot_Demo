@@ -1,6 +1,8 @@
 package com.example.SpringBootDemo.Registration;
 
 import com.example.SpringBootDemo.Registration.EmailManager.EmailService;
+import com.example.SpringBootDemo.User.PlayerData.UserPlayerData;
+import com.example.SpringBootDemo.User.PlayerData.UserPlayerDataService;
 import com.example.SpringBootDemo.User.User;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationToken;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationTokenService;
@@ -24,6 +26,8 @@ public class RegistrationService {
     @Autowired
     //EmailSender emailSender;
     EmailService emailService;
+    @Autowired
+    UserPlayerDataService userPlayerDataService;
 
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -59,6 +63,7 @@ public class RegistrationService {
 
         confirmationTokenService.setConfirmedAt(token); // Updates confirmed_at table field with confirmation time.
         userService.enableUser(confirmationToken.getUser().getEmail()); // Enables user once registration is confirmed.
+        userPlayerDataService.enablePlayer(confirmationToken.getUser().getEmail());
         return "<h1>Welcome " + confirmationToken.getUser().getEmail() + "</h1>";
     }
 

@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 //@AllArgsConstructor
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userService;
@@ -26,11 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/api/registration/**")
+                    .antMatchers("/api/registration/**", "/api/updatePlayerData*", "api/*")
                     .permitAll()
-                .anyRequest()
-                .authenticated().and()
-                .formLogin();
+                    .anyRequest()
+                    .authenticated().and()
+                    .formLogin();
     }
 
     @Override

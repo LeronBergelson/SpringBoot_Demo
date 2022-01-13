@@ -12,6 +12,13 @@ public class RegistrationController {
     @Autowired
     RegistrationService registrationService;
 
+
+    @GetMapping(path = "/")
+    public String home(){
+        return("<h1>Welcome</h1>");
+    }
+
+
     @PostMapping(path = "/registration")
     public String register(@RequestBody RegistrationRequest request){
         return registrationService.register(request);

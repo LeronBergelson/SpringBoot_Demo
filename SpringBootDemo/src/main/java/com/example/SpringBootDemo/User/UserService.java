@@ -1,5 +1,7 @@
 package com.example.SpringBootDemo.User;
 
+import com.example.SpringBootDemo.User.PlayerData.UserPlayerData;
+import com.example.SpringBootDemo.User.PlayerData.UserPlayerDataService;
 import com.example.SpringBootDemo.User.User;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationToken;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationTokenService;
@@ -25,6 +27,8 @@ public class UserService implements UserDetailsService {
     BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     ConfirmationTokenService confirmationTokenService;
+    @Autowired
+    UserPlayerDataService userPlayerDataService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -51,10 +55,14 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user); // Saves user to the User table.
 
+        userPlayerDataService.createPlayerData(new UserPlayerData(user.getEmail(), user));
+
         String token = UUID.randomUUID().toString(); // Confirmation token is created.
         ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15), user); // ConfirmationToken object is declared.
         confirmationTokenService.saveConfirmationToken(confirmationToken); // ConfirmationToken object is added to the Confirmation_Token Table.
 
         return token;
     }
+
+
 }

@@ -1,6 +1,6 @@
-package com.example.SpringBootDemo.User.PlayerData;
+package com.example.SpringBootDemo.Models.PlayerData;
 
-import com.example.SpringBootDemo.User.User;
+import com.example.SpringBootDemo.Models.User.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +21,9 @@ public class UserPlayerData {
     private String email;
     private boolean isvalid = false;
     private float health = 100.0f;
-    private float XCoord = 208.425f;
-    private float YCoord = 2567.03f;
-    private float ZCoord = 424.192f;
+    private float xcoord = 208.425f;
+    private float ycoord = 2567.03f;
+    private float zcoord = 424.192f;
     private int bluestageattempts = 0;
     private int yellowstageattempts = 0;
     private int redstageattempts = 0;

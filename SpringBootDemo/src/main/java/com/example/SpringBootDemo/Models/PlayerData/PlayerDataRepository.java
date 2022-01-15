@@ -1,6 +1,6 @@
-package com.example.SpringBootDemo.User.PlayerData;
+package com.example.SpringBootDemo.Models.PlayerData;
 
-import com.example.SpringBootDemo.User.User;
+import com.example.SpringBootDemo.Models.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface PlayerDataRepository extends JpaRepository<UserPlayerData, Long> {
 
-    Optional<User> findByEmail(String email);
+    Optional<UserPlayerData> findByEmail(String email);
 
     // Query to update the user's enabled value based on email passed in.
     @Transactional
@@ -24,8 +24,15 @@ public interface PlayerDataRepository extends JpaRepository<UserPlayerData, Long
 
     @Transactional
     @Modifying
-    @Query(value = "CALL UpdateUserData(:health, :xcoord, :ycoord, :zcoord, :bluestageattempts, :yellowstageattempts. :redstageattempts);", nativeQuery = true)
-    void updateUser(@Param("health")float health, @Param("xcoord")float xcoord, @Param("ycoord")float ycoord,
+    //@Query(value = "CALL UpdatePlayerData(:health, :xcoord, :ycoord, :zcoord, :bluestageattempts, :yellowstageattempts, :redstageattempts)", nativeQuery = true)
+    @Query(value = "UPDATE user_player_data a " +
+                    "SET " +
+                    "a.health = :health, a.xcoord = :xcoord, a.ycoord = :ycoord, a.zcoord = :zcoord, a.bluestageattempts = :bluestageattempts, " +
+                    "a.yellowstageattempts = :yellowstageattempts, a.redstageattempts = :redstageattempts " +
+                    "WHERE " +
+                    "a.email = :email"
+                    , nativeQuery = true)
+    void updatePlayerData(@Param("email")String email, @Param("health")float health, @Param("xcoord")float xcoord, @Param("ycoord")float ycoord,
                     @Param("zcoord")float zcoord, @Param("bluestageattempts")int bluestageattempts,
                     @Param("yellowstageattempts")int yellowstageattempts, @Param("redstageattempts")int redstageattempts);
 

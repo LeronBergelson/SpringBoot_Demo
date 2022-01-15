@@ -1,4 +1,4 @@
-package com.example.SpringBootDemo.User;
+package com.example.SpringBootDemo.Models.User;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

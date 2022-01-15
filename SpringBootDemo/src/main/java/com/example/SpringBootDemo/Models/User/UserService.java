@@ -1,11 +1,9 @@
-package com.example.SpringBootDemo.User;
+package com.example.SpringBootDemo.Models.User;
 
-import com.example.SpringBootDemo.User.PlayerData.UserPlayerData;
-import com.example.SpringBootDemo.User.PlayerData.UserPlayerDataService;
-import com.example.SpringBootDemo.User.User;
+import com.example.SpringBootDemo.Models.PlayerData.UserPlayerData;
+import com.example.SpringBootDemo.Models.PlayerData.UserPlayerDataService;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationToken;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationTokenService;
-import com.example.SpringBootDemo.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -58,7 +56,7 @@ public class UserService implements UserDetailsService {
         userPlayerDataService.createPlayerData(new UserPlayerData(user.getEmail(), user));
 
         String token = UUID.randomUUID().toString(); // Confirmation token is created.
-        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15), user); // ConfirmationToken object is declared.
+        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(30), user); // ConfirmationToken object is declared.
         confirmationTokenService.saveConfirmationToken(confirmationToken); // ConfirmationToken object is added to the Confirmation_Token Table.
 
         return token;

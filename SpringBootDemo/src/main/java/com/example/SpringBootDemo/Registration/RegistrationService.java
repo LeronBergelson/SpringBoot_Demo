@@ -1,13 +1,12 @@
 package com.example.SpringBootDemo.Registration;
 
 import com.example.SpringBootDemo.Registration.EmailManager.EmailService;
-import com.example.SpringBootDemo.User.PlayerData.UserPlayerData;
-import com.example.SpringBootDemo.User.PlayerData.UserPlayerDataService;
-import com.example.SpringBootDemo.User.User;
+import com.example.SpringBootDemo.Models.PlayerData.UserPlayerDataService;
+import com.example.SpringBootDemo.Models.User.User;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationToken;
 import com.example.SpringBootDemo.Registration.Token.ConfirmationTokenService;
-import com.example.SpringBootDemo.User.UserService;
-import com.example.SpringBootDemo.User.UserRole;
+import com.example.SpringBootDemo.Models.User.UserService;
+import com.example.SpringBootDemo.Models.User.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -124,7 +123,7 @@ public class RegistrationService {
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
                 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
                 "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 15 minutes. <p>See you soon</p>" +
+                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 30 minutes. <p>See you soon</p>" +
                 "        \n" +
                 "      </td>\n" +
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +

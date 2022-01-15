@@ -1,6 +1,6 @@
 package com.example.SpringBootDemo.Registration.Token;
 
-import com.example.SpringBootDemo.User.User;
+import com.example.SpringBootDemo.Models.User.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

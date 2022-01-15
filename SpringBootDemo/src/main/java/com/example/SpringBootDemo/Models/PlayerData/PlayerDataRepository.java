@@ -19,7 +19,7 @@ public interface PlayerDataRepository extends JpaRepository<UserPlayerData, Long
     @Transactional
     @Modifying
     @Query("UPDATE UserPlayerData a " +
-            "SET a.isvalid = TRUE WHERE a.email = email")
+            "SET a.isvalid = TRUE WHERE a.email = :email")
     int enablePlayer(@Param("email")String email);
 
     @Transactional

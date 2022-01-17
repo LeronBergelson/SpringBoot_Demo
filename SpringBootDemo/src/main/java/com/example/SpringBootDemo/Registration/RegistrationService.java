@@ -42,7 +42,7 @@ public class RegistrationService {
         String link = "http://localhost:8080/api/registration/confirm?token=" + token;
         emailService.sendEmail(request.getEmail(), buildEmail(request.getFirstName(), link));
 
-        return token;
+        return "registration_success.html";
     }
 
     @Transactional

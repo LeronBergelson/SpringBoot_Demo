@@ -25,11 +25,6 @@ public class BaseController {
     @Autowired
     private JWTUtil jwtTokenUtil;
 
-    @RequestMapping(path = "/hello")
-    public String home(){
-        return("<h1>Welcome</h1>");
-    }
-
     @RequestMapping(path = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
 

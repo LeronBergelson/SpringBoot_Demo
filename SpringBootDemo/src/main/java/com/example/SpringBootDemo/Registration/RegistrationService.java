@@ -39,7 +39,7 @@ public class RegistrationService {
         String token = userService.signUpUser(new User(request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(), UserRole.USER));
 
         // Sends email with confirmation link to enable user's account.
-        String link = "http://localhost:8080/api/registration/confirm?token=" + token;
+        String link = "http://localhost:8080/registration/confirm?token=" + token;
         emailService.sendEmail(request.getEmail(), buildEmail(request.getFirstName(), link));
 
         return "registration_success.html";
@@ -63,7 +63,7 @@ public class RegistrationService {
         confirmationTokenService.setConfirmedAt(token); // Updates confirmed_at table field with confirmation time.
         userService.enableUser(confirmationToken.getUser().getEmail()); // Enables user once registration is confirmed.
         userPlayerDataService.enablePlayer(confirmationToken.getUser().getEmail());
-        return "<h1>Welcome " + confirmationToken.getUser().getEmail() + "</h1>";
+        return "account_verified.html";
     }
 
     // Email HTML code returned as String.

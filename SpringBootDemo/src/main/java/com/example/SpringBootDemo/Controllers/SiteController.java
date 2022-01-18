@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SiteController {
@@ -30,5 +31,10 @@ public class SiteController {
     public String register(@ModelAttribute RegistrationRequest registerRequest){
         log.info(">> request : {}", registerRequest.toString());
         return registrationService.register(registerRequest);
+    }
+
+    @GetMapping(path = "/registration/confirm")
+    public String confirm(@RequestParam("token") String token) {
+        return registrationService.confirmToken(token);
     }
 }

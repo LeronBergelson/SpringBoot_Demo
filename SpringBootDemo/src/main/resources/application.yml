@@ -10,7 +10,7 @@ spring:
     password: mypass
   jpa:
     hibernate:
-      ddl-auto:
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
